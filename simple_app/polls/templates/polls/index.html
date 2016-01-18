@@ -1,11 +1,25 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+TEST
+<button type="button" id="ClickMe">Click Me1</button>
+<button type="button" id="ClickMe2">Click Me2</button>
+
+</body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+
+    var add = function (a,b) {
+        return a+b;
+    };
+
+    alert(add("aa","bb"));
+
+    document.getElementById('ClickMe').addEventListener("click", function(){ alert("Clicked"); });
+
+</script>
+
+</html>
