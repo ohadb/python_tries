@@ -3,6 +3,33 @@
 <head>
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
+    var map
+    var markers = [];
+
+    function afterTimeout(){
+        var myLatLng2 = {lat: -24.363, lng: 131.044};
+
+        setMapOnAll(null);
+
+        addMarker(myLatLng2,"point2")
+    }
+    // Adds a marker to the map and push to the array.
+    function addMarker(location,text) {
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+          title:text
+      });
+      markers.push(marker);
+    }
+
+    // Sets the map on all markers in the array.
+    function setMapOnAll(map) {
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+      }
+    }
+
 function initialize() {
     var myLatLng = {lat: -25.363, lng: 131.044};
 
@@ -12,14 +39,15 @@ function initialize() {
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
 
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-    // Create a marker and set its position.
-    var marker = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-    });
+    addMarker(myLatLng,"Hello world")
+
+    
+
+    //alert("first message")
+    setTimeout( afterTimeout, 3000 );
+
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
